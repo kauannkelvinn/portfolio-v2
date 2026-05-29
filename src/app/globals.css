@@ -1,26 +1,54 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@font-face {
+  font-family: 'KH Teka';
+  src: url('/fonts/khTekaMedium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@font-face {
+  font-family: 'KH Teka';
+  src: url('/fonts/khTekaBold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@theme {
+  --color-portfolio-white: #f5f5f2;
+  --color-portfolio-black: #111111;
+  --color-portfolio-title: #1e1e1e;
+  --color-portfolio-gray: #7a7a7a;
+  --color-portfolio-percent: #232323;
+  --color-portfolio-small: #3a3a3a;
+  --color-portfolio-footer: #020202;
+
+  --font-teka: 'KH Teka', sans-serif;
+
+  --text-30: 30px;
+  --text-35: 35px;
+  --text-36: 36px;
+  --text-38: 38px;
+  --text-40: 40px;
+  --text-64: 64px;
+  --text-80: 80px;
+  --text-90: 90px;
+  --text-128: 128px;
+
+  --tracking-tightest: -0.04em;
+  --tracking-tighter: -0.02em;
+
+  --leading-title: 0.864;
+
+  --border-2: 2px;
+  --border-3: 3px;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-portfolio-white);
+  color: var(--color-portfolio-black);
+  font-family: var(--font-teka);
+  -webkit-font-smoothing: antialiased;
 }
