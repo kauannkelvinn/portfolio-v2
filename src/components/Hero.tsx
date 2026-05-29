@@ -1,6 +1,6 @@
 export default function Hero() {
   return (
-    <section className="mt-72.25 mb-30 flex w-full flex-col">
+    <section className="border-portfolio-percent mt-72.25 flex w-full flex-col border-b-2 pb-30">
       <div className="text-90 text-portfolio-title flex flex-col leading-[0.864] font-medium">
         <span>Full Stack</span>
         <span>Software Engineer</span>
