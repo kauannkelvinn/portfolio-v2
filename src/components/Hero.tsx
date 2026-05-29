@@ -21,7 +21,7 @@ export default function Hero() {
             </a>
             <a
               href="#about"
-              className="text-portfolio-gray border-portfolio-percent border-b-3 pb-1 transition-opacity hover:opacity-70"
+              className="text-portfolio-gray border-portfolio-percent hover:text-portfolio-percent border-b-3 pb-1 transition-opacity"
             >
               Leia sobre mim
             </a>
