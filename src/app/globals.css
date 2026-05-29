@@ -37,6 +37,13 @@
   --text-90: 90px;
   --text-128: 128px;
 
+  --text-hero: 128px;
+  --text-subhero: 90px;
+  --text-body: 38px;
+
+  --tracking-hero: -0.04em;
+  --leading-hero: 0.864;
+
   --tracking-tightest: -0.04em;
   --tracking-tighter: -0.02em;
 
