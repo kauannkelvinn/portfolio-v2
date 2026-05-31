@@ -1,4 +1,36 @@
+'use client'
+
+import { motion } from 'framer-motion'
+
 export default function About() {
+  const techLogos = [
+    { name: 'Next.js', src: 'nextjs-logo.png', width: 329, height: 67, url: 'https://nextjs.org/' },
+    { name: 'React', src: 'react-logo.png', width: 90, height: 80, url: 'https://react.dev/' },
+    {
+      name: 'Prisma',
+      src: 'prisma-logo.png',
+      width: 204,
+      height: 80,
+      url: 'https://www.prisma.io/',
+    },
+    { name: 'AWS', src: 'aws-logo.png', width: 117, height: 70, url: 'https://aws.amazon.com/' },
+    { name: 'Node.js', src: 'nodejs-logo.png', width: 131, height: 62, url: 'https://nodejs.org/' },
+    {
+      name: 'Docker',
+      src: 'docker-logo.png',
+      width: 272,
+      height: 62,
+      url: 'https://www.docker.com/',
+    },
+    {
+      name: 'TypeScript',
+      src: 'typescript-logo.png',
+      width: 88,
+      height: 88,
+      url: 'https://www.typescriptlang.org/',
+    },
+  ]
+
   return (
     <section
       id="about"
@@ -35,63 +67,79 @@ export default function About() {
         </p>
       </div>
 
-      <div className="mt-10 flex flex-wrap items-center justify-center gap-8 md:mt-17.5 md:justify-start md:gap-25.5">
-        <img
-          src={`${process.env.NEXT_PUBLIC_CDN_URL}/images/nextjs-logo.png`}
-          alt="Next.js"
-          width={329}
-          height={67}
-          loading="eager"
-          className="h-7 w-auto transform-gpu md:h-16.75"
-        />
-        <img
-          src={`${process.env.NEXT_PUBLIC_CDN_URL}/images/react-logo.png`}
-          alt="React"
-          width={90}
-          height={80}
-          loading="eager"
-          className="h-8 w-auto transform-gpu md:h-20"
-        />
-        <img
-          src={`${process.env.NEXT_PUBLIC_CDN_URL}/images/prisma-logo.png`}
-          alt="Prisma"
-          width={204}
-          height={80}
-          loading="eager"
-          className="h-7 w-auto transform-gpu md:h-20"
-        />
-        <img
-          src={`${process.env.NEXT_PUBLIC_CDN_URL}/images/aws-logo.png`}
-          alt="AWS"
-          width={117}
-          height={70}
-          loading="eager"
-          className="h-8 w-auto transform-gpu md:h-17.5"
-        />
-        <img
-          src={`${process.env.NEXT_PUBLIC_CDN_URL}/images/nodejs-logo.png`}
-          alt="Node.js"
-          width={131}
-          height={80}
-          loading="eager"
-          className="h-8 w-auto transform-gpu md:h-20"
-        />
-        <img
-          src={`${process.env.NEXT_PUBLIC_CDN_URL}/images/docker-logo.png`}
-          alt="Docker"
-          width={272}
-          height={62}
-          loading="eager"
-          className="h-7 w-auto transform-gpu md:h-15.5"
-        />
-        <img
-          src={`${process.env.NEXT_PUBLIC_CDN_URL}/images/typescript-logo.png`}
-          alt="TypeScript"
-          width={88}
-          height={88}
-          loading="eager"
-          className="h-8 w-auto transform-gpu md:h-22"
-        />
+      <div className="mt-17.5 hidden flex-wrap items-center justify-center gap-25.5 md:flex">
+        {techLogos.map((tech, index) => (
+          <a
+            key={`desktop-${index}`}
+            href={tech.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-transform duration-300 hover:scale-110"
+          >
+            <img
+              src={`${process.env.NEXT_PUBLIC_CDN_URL}/images/${tech.src}`}
+              alt={tech.name}
+              width={tech.width}
+              height={tech.height}
+              loading="eager"
+              className="h-16.75 w-auto transform-gpu"
+            />
+          </a>
+        ))}
+      </div>
+
+      <div className="mask-image-fade relative mt-10 flex w-full overflow-hidden md:hidden">
+        <motion.div
+          className="flex w-max flex-nowrap items-center"
+          animate={{ x: ['0%', '-50%'] }}
+          transition={{
+            repeat: Infinity,
+            ease: 'linear',
+            duration: 25,
+          }}
+        >
+          <div className="flex w-max shrink-0 items-center gap-10 pr-10">
+            {techLogos.map((tech, index) => (
+              <a
+                key={`mobile-1-${index}`}
+                href={tech.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="shrink-0 transition-transform hover:scale-105"
+              >
+                <img
+                  src={`${process.env.NEXT_PUBLIC_CDN_URL}/images/${tech.src}`}
+                  alt={tech.name}
+                  width={tech.width}
+                  height={tech.height}
+                  loading="eager"
+                  className="h-7 w-auto transform-gpu"
+                />
+              </a>
+            ))}
+          </div>
+
+          <div className="flex w-max shrink-0 items-center gap-10 pr-10">
+            {techLogos.map((tech, index) => (
+              <a
+                key={`mobile-2-${index}`}
+                href={tech.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="shrink-0 transition-transform hover:scale-105"
+              >
+                <img
+                  src={`${process.env.NEXT_PUBLIC_CDN_URL}/images/${tech.src}`}
+                  alt={tech.name}
+                  width={tech.width}
+                  height={tech.height}
+                  loading="eager"
+                  className="h-7 w-auto transform-gpu"
+                />
+              </a>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   )

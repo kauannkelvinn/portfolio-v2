@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import Image from 'next/image'
 
 export default function TranslateMenu() {
   const [isOpen, setIsOpen] = useState(false)
@@ -20,7 +19,14 @@ export default function TranslateMenu() {
         className="-mt-1.5 cursor-pointer transition-opacity hover:opacity-70 focus:outline-none"
         aria-label="Toggle Language"
       >
-        <Image src="/images/translate.svg" alt="Translate" width={43} height={43} />
+        <img
+          src={`${process.env.NEXT_PUBLIC_CDN_URL}/images/translate.png`}
+          alt="Translate"
+          width={43}
+          height={43}
+          loading="eager"
+          className="transform-gpu"
+        />
       </button>
     </div>
   )
