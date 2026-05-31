@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 
 export default function Footer() {
@@ -143,12 +142,13 @@ export default function Footer() {
               onClick={() => setIsLangOpen(!isLangOpen)}
               className="flex items-center transition-opacity focus:outline-none active:opacity-70"
             >
-              <Image
-                src="/images/global.svg"
+              <img
+                src={`${process.env.NEXT_PUBLIC_CDN_URL}/images/global.png`}
                 alt="global"
                 width={24}
                 height={24}
-                className="h-5 w-5 object-contain"
+                loading="eager"
+                className="h-5 w-auto transform-gpu object-contain"
               />
             </button>
 

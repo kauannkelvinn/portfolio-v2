@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import TranslateMenu from './TranslateMenu'
 
@@ -64,12 +63,13 @@ export default function Navbar() {
             onClick={toggleLang}
             className="pb-1 transition-opacity focus:outline-none active:opacity-75"
           >
-            <Image
-              src="/images/translate.svg"
+            <img
+              src={`${process.env.NEXT_PUBLIC_CDN_URL}/images/translate.png`}
               alt="Translate"
               width={28}
               height={28}
-              className="h-7 w-7"
+              loading="eager"
+              className="h-7 w-auto transform-gpu"
             />
           </button>
 

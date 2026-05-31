@@ -18,6 +18,7 @@ const eslintConfig = defineConfig([
     rules: {
       'no-console': ['warn', { allow: ['warn', 'error'] }],
       'react-hooks/exhaustive-deps': 'error',
+      '@next/next/no-img-element': 'off',
     },
   },
 

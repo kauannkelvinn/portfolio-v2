@@ -1,5 +1,3 @@
-import Image from 'next/image'
-
 export default function About() {
   return (
     <section
@@ -38,54 +36,61 @@ export default function About() {
       </div>
 
       <div className="mt-10 flex flex-wrap items-center justify-center gap-8 md:mt-17.5 md:justify-start md:gap-25.5">
-        <Image
-          src="/images/nextjs-logo.svg"
+        <img
+          src={`${process.env.NEXT_PUBLIC_CDN_URL}/images/nextjs-logo.png`}
           alt="Next.js"
           width={329}
           height={67}
-          className="h-7 w-auto md:h-16.75"
+          loading="eager"
+          className="h-7 w-auto transform-gpu md:h-16.75"
         />
-        <Image
-          src="/images/react-logo.svg"
+        <img
+          src={`${process.env.NEXT_PUBLIC_CDN_URL}/images/react-logo.png`}
           alt="React"
           width={90}
           height={80}
-          className="h-8 w-auto md:h-20"
+          loading="eager"
+          className="h-8 w-auto transform-gpu md:h-20"
         />
-        <Image
-          src="/images/prisma-logo.svg"
+        <img
+          src={`${process.env.NEXT_PUBLIC_CDN_URL}/images/prisma-logo.png`}
           alt="Prisma"
           width={204}
           height={80}
-          className="h-7 w-auto md:h-20"
+          loading="eager"
+          className="h-7 w-auto transform-gpu md:h-20"
         />
-        <Image
-          src="/images/aws-logo.svg"
+        <img
+          src={`${process.env.NEXT_PUBLIC_CDN_URL}/images/aws-logo.png`}
           alt="AWS"
           width={117}
           height={70}
-          className="h-8 w-auto md:h-17.5"
+          loading="eager"
+          className="h-8 w-auto transform-gpu md:h-17.5"
         />
-        <Image
-          src="/images/nodejs-logo.svg"
+        <img
+          src={`${process.env.NEXT_PUBLIC_CDN_URL}/images/nodejs-logo.png`}
           alt="Node.js"
           width={131}
           height={80}
-          className="h-8 w-auto md:h-20"
+          loading="eager"
+          className="h-8 w-auto transform-gpu md:h-20"
         />
-        <Image
-          src="/images/docker-logo.svg"
+        <img
+          src={`${process.env.NEXT_PUBLIC_CDN_URL}/images/docker-logo.png`}
           alt="Docker"
           width={272}
           height={62}
-          className="h-7 w-auto md:h-15.5"
+          loading="eager"
+          className="h-7 w-auto transform-gpu md:h-15.5"
         />
-        <Image
-          src="/images/typescript-logo.svg"
+        <img
+          src={`${process.env.NEXT_PUBLIC_CDN_URL}/images/typescript-logo.png`}
           alt="TypeScript"
           width={88}
           height={88}
-          className="h-8 w-auto md:h-22"
+          loading="eager"
+          className="h-8 w-auto transform-gpu md:h-22"
         />
       </div>
     </section>

@@ -26,6 +26,7 @@ export default function Home() {
 
       gsap.set(footer, {
         y: '100%',
+        opacity: 1,
         borderTopLeftRadius: '0px',
         borderTopRightRadius: '0px',
       })
@@ -63,7 +64,7 @@ export default function Home() {
 
       <div
         ref={bigFooterRef}
-        className="bg-portfolio-footer text-portfolio-white fixed bottom-0 left-1/2 z-20 h-[90vh] w-screen -translate-x-1/2 will-change-transform"
+        className="bg-portfolio-footer text-portfolio-white fixed bottom-0 left-1/2 z-20 h-[90vh] w-screen -translate-x-1/2 opacity-0 will-change-transform"
       >
         <Footer />
       </div>
