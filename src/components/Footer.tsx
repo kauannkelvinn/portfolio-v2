@@ -30,7 +30,7 @@ export default function Footer() {
 
         <div className="mt-auto flex w-full items-end justify-between pt-8">
           <div className="text-36 flex items-center gap-6">
-            <span>© 2026</span>
+            <span>© {new Date().getFullYear()}</span>
             <div className="ml-8 flex items-center gap-13">
               <span className="cursor-pointer transition hover:opacity-70">Portuguese</span>
               <span className="cursor-pointer transition hover:opacity-70">English</span>
@@ -153,7 +153,7 @@ export default function Footer() {
             </button>
 
             <span className="absolute left-1/2 -translate-x-1/2 text-[18px] font-medium">
-              © 2026
+              © {new Date().getFullYear()}
             </span>
 
             <button
