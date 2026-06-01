@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { usePathname, useRouter } from 'next/navigation'
 
 interface FooterProps {
   dict: {
@@ -28,7 +29,23 @@ interface FooterProps {
 
 export default function Footer({ dict, nav }: FooterProps) {
   const [isLangOpen, setIsLangOpen] = useState(false)
+  const [isDesktopLangOpen, setIsDesktopLangOpen] = useState(false)
 
+  const pathname = usePathname()
+  const router = useRouter()
+
+  const switchLang = (newLocale: string) => {
+    if (!pathname) return
+    const segments = pathname.split('/')
+    segments[1] = newLocale
+
+    setIsLangOpen(false)
+    setIsDesktopLangOpen(false)
+
+    setTimeout(() => {
+      router.push(segments.join('/'), { scroll: false })
+    }, 400)
+  }
   return (
     <div className="relative flex h-full w-full flex-col">
       <div className="hidden h-full w-full flex-col justify-between px-7.5 pt-27.5 pb-12.5 md:flex">
@@ -52,11 +69,40 @@ export default function Footer({ dict, nav }: FooterProps) {
         </div>
 
         <div className="mt-auto flex w-full items-end justify-between pt-8">
-          <div className="text-36 flex items-center gap-6">
+          <div className="flex items-center gap-6 text-[32px]">
             <span>© {new Date().getFullYear()}</span>
-            <div className="ml-8 flex items-center gap-13">
-              <span className="cursor-pointer transition hover:opacity-70">{dict.mobile.pt}</span>
-              <span className="cursor-pointer transition hover:opacity-70">{dict.mobile.en}</span>
+
+            <div className="ml-8 flex items-center gap-6 overflow-hidden">
+              <button
+                onClick={() => setIsDesktopLangOpen(!isDesktopLangOpen)}
+                className="flex cursor-pointer items-center transition-opacity hover:opacity-70 focus:outline-none"
+              >
+                <img
+                  src={`${process.env.NEXT_PUBLIC_CDN_URL}/images/global.png`}
+                  alt="global"
+                  width={43}
+                  height={43}
+                  loading="eager"
+                  className="h-11 w-auto transform-gpu object-contain pb-2"
+                />
+              </button>
+
+              <div
+                className={`flex items-center gap-6 pl-3 transition-all duration-300 ease-in-out ${isDesktopLangOpen ? 'translate-x-0 opacity-100' : 'pointer-events-none -translate-x-4 opacity-0'}`}
+              >
+                <button
+                  onClick={() => switchLang('pt')}
+                  className="cursor-pointer transition-opacity hover:opacity-70"
+                >
+                  {dict.mobile.pt}
+                </button>
+                <button
+                  onClick={() => switchLang('en')}
+                  className="cursor-pointer transition-opacity hover:opacity-70"
+                >
+                  {dict.mobile.en}
+                </button>
+              </div>
             </div>
           </div>
 
@@ -142,13 +188,13 @@ export default function Footer({ dict, nav }: FooterProps) {
               >
                 <div className="flex flex-col items-start gap-2 pb-5 text-[18px] font-medium">
                   <button
-                    onClick={() => setIsLangOpen(false)}
+                    onClick={() => switchLang('pt')}
                     className="transition-opacity active:opacity-70"
                   >
                     {dict.mobile.pt}
                   </button>
                   <button
-                    onClick={() => setIsLangOpen(false)}
+                    onClick={() => switchLang('en')}
                     className="transition-opacity active:opacity-70"
                   >
                     {dict.mobile.en}

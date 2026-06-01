@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { usePathname, useRouter } from 'next/navigation'
 import TranslateMenu from './TranslateMenu'
 
 interface NavbarProps {
@@ -21,6 +22,9 @@ export default function Navbar({ dict, lang }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isLangOpen, setIsLangOpen] = useState(false)
 
+  const pathname = usePathname()
+  const router = useRouter()
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
     setIsLangOpen(false)
@@ -29,6 +33,19 @@ export default function Navbar({ dict, lang }: NavbarProps) {
   const toggleLang = () => {
     setIsLangOpen(!isLangOpen)
     setIsMenuOpen(false)
+  }
+
+  const switchLang = (newLocale: string) => {
+    if (!pathname) return
+    const segments = pathname.split('/')
+    segments[1] = newLocale
+
+    setIsLangOpen(false)
+    setIsMenuOpen(false)
+
+    setTimeout(() => {
+      router.push(segments.join('/'), { scroll: false })
+    }, 400)
   }
 
   return (
@@ -92,13 +109,11 @@ export default function Navbar({ dict, lang }: NavbarProps) {
             aria-label="Toggle Menu"
           >
             <div className="bg-portfolio-black absolute top-0 left-0 z-30 h-0.75 w-5.25" />
-
             <div
               className={`bg-portfolio-black absolute top-2 left-0 z-20 h-[2.5px] w-5.25 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
                 isMenuOpen ? '-translate-y-2' : ''
               }`}
             />
-
             <div
               className={`bg-portfolio-black absolute top-4 left-0 z-10 h-[2.5px] w-5.25 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
                 isMenuOpen ? '-translate-y-4' : ''
@@ -137,13 +152,13 @@ export default function Navbar({ dict, lang }: NavbarProps) {
                 {isLangOpen && (
                   <div className="flex w-full justify-start gap-8">
                     <button
-                      onClick={() => setIsLangOpen(false)}
+                      onClick={() => switchLang('pt')}
                       className="transition-opacity active:opacity-75"
                     >
                       {lang.pt}
                     </button>
                     <button
-                      onClick={() => setIsLangOpen(false)}
+                      onClick={() => switchLang('en')}
                       className="transition-opacity active:opacity-75"
                     >
                       {lang.en}
