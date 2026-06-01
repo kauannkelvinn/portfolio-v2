@@ -28,20 +28,24 @@
 
   --font-teka: 'KH Teka', sans-serif;
 
-  --text-30: 30px;
-  --text-35: 35px;
-  --text-36: 36px;
-  --text-38: 38px;
-  --text-40: 40px;
-  --text-50: 50px;
-  --text-64: 64px;
-  --text-80: 80px;
-  --text-90: 90px;
-  --text-128: 128px;
-
-  --text-hero: 128px;
-  --text-subhero: 90px;
-  --text-body: 38px;
+  --text-hero-title: clamp(42px, 25.1px + 4.507vw, 90px);
+  --text-hero-body: clamp(25px, 20.42px + 1.221vw, 38px);
+  --text-cta: clamp(20px, 16.48px + 0.939vw, 30px);
+  --text-section-title: clamp(25px, 19.72px + 1.408vw, 40px);
+  --text-section-body: clamp(25px, 19.72px + 1.408vw, 40px);
+  --text-stat-value: clamp(80px, 63.1px + 4.507vw, 128px);
+  --text-stat-unit: clamp(32px, 25.66px + 1.69vw, 50px);
+  --text-stat-description: clamp(25px, 20.42px + 1.221vw, 38px);
+  --text-highlights-title: clamp(24px, 18.37px + 1.502vw, 40px);
+  --text-highlight-heading: clamp(22px, 17.42px + 1.221vw, 35px);
+  --text-highlight-body: clamp(18px, 13.78px + 1.127vw, 30px);
+  --text-404-massive: clamp(120px, 74.23px + 12.206vw, 250px);
+  --text-404-description: clamp(20px, 18.24px + 0.469vw, 25px);
+  --text-404-link: clamp(20px, 19.3px + 0.188vw, 22px);
+  --text-footer-title: clamp(30px, 18.03px + 3.192vw, 64px);
+  --text-footer-nav: clamp(20px, 14.37px + 1.502vw, 36px);
+  --text-footer-copyright: clamp(18px, 13.1px + 1.315vw, 32px);
+  --text-ui-menu: 18px;
 
   --tracking-hero: -0.04em;
   --leading-hero: 0.864;

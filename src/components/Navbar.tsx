@@ -50,7 +50,7 @@ export default function Navbar({ dict, lang }: NavbarProps) {
 
   return (
     <header className="flex w-full flex-col">
-      <div className="border-portfolio-black text-36 tracking-tightest hidden w-full items-center justify-between border-b-[3px] py-7.5 md:flex">
+      <div className="border-portfolio-black text-footer-nav tracking-tightest hidden w-full items-center justify-between border-b-[3px] py-7.5 md:flex">
         <nav>
           <ul className="text-portfolio-percent flex gap-22 font-medium">
             <li>
@@ -131,7 +131,7 @@ export default function Navbar({ dict, lang }: NavbarProps) {
               transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
               className="w-full overflow-hidden"
             >
-              <div className="text-portfolio-black tracking-tightest flex w-full pt-4 pb-4 text-[18px] font-medium">
+              <div className="text-ui-menu text-portfolio-black tracking-tightest flex w-full pt-4 pb-4 font-medium">
                 {isMenuOpen && (
                   <div className="flex w-full justify-between">
                     <a href="#work" onClick={() => setIsMenuOpen(false)}>

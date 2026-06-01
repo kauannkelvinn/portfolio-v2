@@ -51,11 +51,11 @@ export default function Footer({ dict, nav }: FooterProps) {
       <div className="hidden h-full w-full flex-col justify-between px-7.5 pt-27.5 pb-12.5 md:flex">
         <div className="flex w-full items-start justify-between leading-12">
           <div className="flex flex-col">
-            <h2 className="text-64 tracking-tightest font-medium">{dict.title}</h2>
-            <p className="text-36 mt-2 tracking-tighter">{dict.subtitle}</p>
+            <h2 className="text-footer-title tracking-tightest font-medium">{dict.title}</h2>
+            <p className="text-footer-nav mt-2 tracking-tighter">{dict.subtitle}</p>
           </div>
 
-          <div className="text-36 text-portfolio-nav tracking-tightest flex flex-col items-end gap-3">
+          <div className="text-footer-nav text-portfolio-nav tracking-tightest flex flex-col items-end gap-3">
             <a href="#work" className="hover:text-portfolio-white transition">
               {nav.work}
             </a>
@@ -69,7 +69,7 @@ export default function Footer({ dict, nav }: FooterProps) {
         </div>
 
         <div className="mt-auto flex w-full items-end justify-between pt-8">
-          <div className="flex items-center gap-6 text-[32px]">
+          <div className="text-footer-copyright flex items-center gap-6">
             <span>© {new Date().getFullYear()}</span>
 
             <div className="ml-8 flex items-center gap-6 overflow-hidden">
@@ -106,7 +106,7 @@ export default function Footer({ dict, nav }: FooterProps) {
             </div>
           </div>
 
-          <div className="text-36 tracking-tightest flex items-center gap-20">
+          <div className="text-footer-nav tracking-tightest flex items-center gap-20">
             <a
               href="https://www.linkedin.com/in/kauannkelvinn/"
               target="_blank"
@@ -141,11 +141,11 @@ export default function Footer({ dict, nav }: FooterProps) {
       <div className="flex h-full w-full flex-col justify-between px-5 pt-25 pb-6 md:hidden">
         <div className="mb-auto flex w-full items-start justify-between">
           <div className="flex flex-col leading-6">
-            <span className="text-30 tracking-tightest font-medium">{dict.title}</span>
-            <span className="mt-1 max-w-75 text-[20px] tracking-tighter">{dict.subtitle}</span>
+            <span className="text-footer-title tracking-tightest font-medium">{dict.title}</span>
+            <span className="text-footer-nav mt-1 max-w-75 tracking-tighter">{dict.subtitle}</span>
           </div>
 
-          <div className="text-portfolio-nav tracking-tightest flex flex-col items-end gap-2 text-[20px]">
+          <div className="text-footer-nav text-portfolio-nav tracking-tightest flex flex-col items-end gap-2">
             <a
               href="https://www.linkedin.com/in/kauannkelvinn/"
               target="_blank"
@@ -186,7 +186,7 @@ export default function Footer({ dict, nav }: FooterProps) {
                 transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                 className="w-full overflow-hidden"
               >
-                <div className="flex flex-col items-start gap-2 pb-5 text-[18px] font-medium">
+                <div className="text-ui-menu flex flex-col items-start gap-2 pb-5 font-medium">
                   <button
                     onClick={() => switchLang('pt')}
                     className="transition-opacity active:opacity-70"
@@ -219,13 +219,13 @@ export default function Footer({ dict, nav }: FooterProps) {
               />
             </button>
 
-            <span className="absolute left-1/2 -translate-x-1/2 text-[18px] font-medium">
+            <span className="text-ui-menu absolute left-1/2 -translate-x-1/2 font-medium">
               © {new Date().getFullYear()}
             </span>
 
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="text-[18px] font-medium transition-opacity active:opacity-70"
+              className="text-ui-menu font-medium transition-opacity active:opacity-70"
             >
               {dict.mobile.home}
             </button>
