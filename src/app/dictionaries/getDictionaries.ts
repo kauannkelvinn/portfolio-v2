@@ -3,4 +3,7 @@ const dictionaries = {
   pt: () => import('./pt.json').then((module) => module.default),
 }
 
-export const getDictionary = async (locale: 'en' | 'pt') => dictionaries[locale]()
+export const getDictionary = async (locale: 'en' | 'pt') => {
+  const validLocale = dictionaries[locale] ? locale : 'en'
+  return dictionaries[validLocale]()
+}
