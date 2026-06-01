@@ -1,0 +1,93 @@
+{
+  "seo": {
+    "title": "Kauan Kelvin | Full Stack Software Engineer",
+    "description": "Portfolio de Kauan Kelvin, Engenheiro de Software focado em performance e arquiteturas escaláveis."
+  },
+  "nav": {
+    "work": "Work",
+    "about": "About",
+    "statistics": "Statistics",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Software Engineer",
+    "subtitle": "Building things that matter.",
+    "description": "Focado em arquitetura escalável, performance de alto nível e engenharia de software de ponta a ponta, integrando desde interfaces limpas até sistemas complexos e APIs que resolvem problemas reais.",
+    "ctaWork": "Ver trabalho",
+    "ctaAbout": "Leia sobre mim"
+  },
+  "work": {
+    "title": "Work",
+    "project1": {
+      "title": "Appreso Kaf",
+      "description": "Painel SaaS (\"Life OS\") com IA generativa e automações via WhatsApp Business API."
+    },
+    "project2": {
+      "title": "Watch Party",
+      "description": "Plataforma de streaming social com sincronização de vídeo e chat em tempo real."
+    },
+    "project3": {
+      "title": "Giromax",
+      "description": "Vitrine de Ofertas Inteligente focada em marketing de afiliados."
+    }
+  },
+  "about": {
+    "title": "About",
+    "paragraph1": "Sou engenheiro full-stack focado em criar sistemas web rápidos. Meu foco é total em performance, na arquitetura limpa e na experiência de produto.",
+    "paragraph2": "Unindo interfaces robustas em React e Next.js a estruturas estáveis de backend com Node.js e AWS, encaro código de forma analítica. Minha bagagem lidando com incidentes críticos sob pressão me deu disciplina para focar em causa raiz. Na prática, isso se traduz em caçar gargalos de renderização, otimizar fluxos de dados complexos em tempo real e desenhar arquiteturas multi-tenant seguras.",
+    "paragraph3": "Da entrega de dashboards de BI complexos à construção de experiências 3D interativas, me sinto em casa trabalhando com autonomia, deploys rápidos e alto nível de craft técnico através das tecnologias que formam o meu core stack:"
+  },
+  "statistics": {
+    "title": "Statistics",
+    "stat1": {
+      "value": "40",
+      "unit": "%",
+      "description": "Redução nos tempos de carregamento inicial de gráficos através da refatoração de componentes de renderização de dados complexos em painéis do lado do cliente."
+    },
+    "stat2": {
+      "value": "100",
+      "unit": "%",
+      "description": "Estabilidade alcançada nos pipelines de implantação de contêineres após auditoria de ambientes e resolução da paridade de arquivos de bloqueio de dependências."
+    },
+    "stat3": {
+      "value": "+3",
+      "unit": "years",
+      "description": "Experiência prática contínua no domínio de JavaScript, TypeScript e arquiteturas modernas de ecossistemas full-stack."
+    },
+    "highlights": {
+      "title": "Engineering Highlights -",
+      "item1": {
+        "title": "0 → 1 Builder",
+        "description": "Histórico comprovado de desenvolvimento de arquitetura de produtos auxiliares do zero, preenchendo a lacuna entre APIs de dados brutos e o design do produto para o usuário final."
+      },
+      "item2": {
+        "title": "Operational Excellence",
+        "description": "Experiência em gestão de operações técnicas de alta pressão, investigações de causa raiz e cumprimento rigoroso de SLAs."
+      },
+      "item3": {
+        "title": "Global Talent Pool",
+        "description": "Avaliado e aprovado em diversas plataformas de software especializadas em nuvem e para freelancers internacionais."
+      }
+    }
+  },
+  "footer": {
+    "title": "Kauan Kelvin",
+    "subtitle": "Full Stack Software Engineer",
+    "links": {
+      "linkedin": "Linkedin",
+      "twitter": "Twitter",
+      "github": "Github",
+      "email": "Email"
+    },
+    "mobile": {
+      "home": "Home",
+      "pt": "Portuguese",
+      "en": "English"
+    }
+  },
+  "notFound": {
+    "title": "404",
+    "description": "Espaço não encontrado. A página que você procura se perdeu no vazio.",
+    "back": "Retornar à base"
+  }
+}

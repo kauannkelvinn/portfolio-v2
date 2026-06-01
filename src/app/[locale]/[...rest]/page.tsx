@@ -1,0 +1,34 @@
+import Link from 'next/link'
+import { getDictionary } from '../../dictionaries/getDictionaries'
+
+export default async function CatchAll({ params }: { params: Promise<{ locale: 'en' | 'pt' }> }) {
+  const { locale } = await params
+  const dict = await getDictionary(locale)
+
+  return (
+    <main className="flex min-h-[85vh] w-full flex-col items-center justify-center px-7.5">
+      <div className="flex flex-col items-center text-center">
+        <h1 className="text-404-massive text-portfolio-black tracking-tightest leading-none font-bold">
+          {dict.notFound.title}
+        </h1>
+
+        <p className="text-404-description text-portfolio-gray mt-2 max-w-100 leading-snug font-medium tracking-tighter md:mt-6">
+          {dict.notFound.description}
+        </p>
+
+        <Link
+          href={`/${locale}`}
+          className="group text-portfolio-black mt-16 flex w-max items-center gap-2 focus:outline-none md:mt-24"
+        >
+          <span className="text-404-link relative pb-1 font-medium">
+            {dict.notFound.back}
+            <span className="bg-portfolio-black absolute bottom-0 left-0 h-0.5 w-full origin-left scale-x-0 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100" />
+          </span>
+          <span className="transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1.5">
+            →
+          </span>
+        </Link>
+      </div>
+    </main>
+  )
+}
