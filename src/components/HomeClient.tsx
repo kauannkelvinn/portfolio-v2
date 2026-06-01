@@ -3,7 +3,8 @@
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/dist/ScrollTrigger'
-import { useRef } from 'react'
+import SplitType from 'split-type'
+import { useRef, useEffect } from 'react'
 
 import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
@@ -20,16 +21,88 @@ export default function HomeClient({ dict }: { dict: typeof pt }) {
   const mainRef = useRef<HTMLElement>(null)
   const bigFooterRef = useRef<HTMLDivElement>(null)
 
+  useEffect(() => {
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual'
+    }
+    window.scrollTo(0, 0)
+  }, [])
+
   useGSAP(
     () => {
       const footer = bigFooterRef.current
       if (!footer) return
+
+      gsap.set(['.reveal-text', '.reveal-lines'], { opacity: 1 })
 
       gsap.set(footer, {
         y: '100%',
         opacity: 1,
         borderTopLeftRadius: '0px',
         borderTopRightRadius: '0px',
+      })
+
+      const splitElements = document.querySelectorAll('.reveal-lines')
+
+      splitElements.forEach((el) => {
+        const split = new SplitType(el as HTMLElement, { types: 'lines' })
+
+        split.lines?.forEach((line) => {
+          const wrapper = document.createElement('div')
+          wrapper.style.overflow = 'hidden'
+          wrapper.style.display = 'block'
+          line.parentNode?.insertBefore(wrapper, line)
+          wrapper.appendChild(line)
+        })
+
+        if (split.lines && split.lines.length > 0) {
+          const isHero = el.closest('#hero') !== null
+
+          gsap.fromTo(
+            split.lines,
+            { y: '110%' },
+            {
+              y: '0%',
+              duration: isHero ? 1.5 : 1.2,
+              delay: isHero ? 0.4 : 0,
+              ease: 'expo.out',
+              stagger: 0.08,
+              scrollTrigger: {
+                trigger: el,
+                start: 'top 85%',
+                toggleActions: 'play none none none',
+              },
+            }
+          )
+        }
+      })
+
+      const revealContainers = gsap.utils.toArray<HTMLElement>('.overflow-hidden')
+
+      revealContainers.forEach((container) => {
+        const textsInside = container.querySelectorAll('.reveal-text')
+
+        if (textsInside.length > 0) {
+          const isHero = container.closest('#hero') !== null
+
+          gsap.fromTo(
+            textsInside,
+            { y: '110%' },
+            {
+              y: '0%',
+              duration: isHero ? 1.5 : 1.2,
+              delay: isHero ? 0.4 : 0,
+              ease: 'expo.out',
+              stagger: 0.1,
+              scrollTrigger: {
+                trigger: container,
+                start: 'top 90%',
+                toggleActions: 'play none none none',
+                invalidateOnRefresh: true,
+              },
+            }
+          )
+        }
       })
 
       const tl = gsap.timeline({

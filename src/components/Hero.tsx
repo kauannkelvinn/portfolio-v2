@@ -10,16 +10,27 @@ interface HeroProps {
 
 export default function Hero({ dict }: HeroProps) {
   return (
-    <section className="border-portfolio-percent mt-16 flex w-full flex-col border-b-2 pb-30 md:mt-72.25">
+    <section
+      id="hero"
+      className="bg-portfolio-white border-portfolio-percent relative mt-16 flex w-full flex-col border-b-2 pb-30 md:mt-72.25"
+    >
       <div className="text-hero-title text-portfolio-title md:leading-title flex flex-col leading-9 font-medium">
-        <span>Full Stack</span>
-        <span>{dict.title}</span>
-        <span className="text-hero-title text-portfolio-gray mt-4 md:mt-5">{dict.subtitle}</span>
+        <div className="overflow-hidden">
+          <span className="reveal-text block">Full Stack</span>
+        </div>
+        <div className="overflow-hidden">
+          <span className="reveal-text block">{dict.title}</span>
+        </div>
+        <div className="mt-4 overflow-hidden md:mt-5">
+          <span className="reveal-text text-hero-title text-portfolio-gray block">
+            {dict.subtitle}
+          </span>
+        </div>
       </div>
 
       <div className="mt-19.5 flex w-full">
         <div className="max-w-323.5">
-          <p className="text-hero-body text-portfolio-black leading-8 font-medium md:leading-normal">
+          <p className="reveal-lines text-hero-body text-portfolio-black leading-8 font-medium md:leading-normal">
             {dict.description}
           </p>
 

@@ -42,28 +42,32 @@ export default function About({ dict }: AboutProps) {
   return (
     <section
       id="about"
-      className="border-portfolio-black pb:16 flex w-full flex-col border-b-2 py-12 md:py-12.5 md:pb-26"
+      className="bg-portfolio-white border-portfolio-black pb:16 relative flex w-full flex-col border-b-2 py-12 md:py-12.5 md:pb-26"
     >
-      <div className="text-section-title text-portfolio-black mb-12 w-full text-center font-medium md:mb-23">
-        {dict.title}
+      <div className="mb-12 w-full text-center md:mb-23">
+        <div className="overflow-hidden">
+          <h2 className="reveal-text text-section-title text-portfolio-black font-medium">
+            {dict.title}
+          </h2>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 gap-x-20 gap-y-10 md:grid-cols-2 md:gap-y-0">
         <div className="flex w-full flex-col leading-snug md:w-auto md:max-w-157 md:leading-13">
-          <p className="text-section-body text-portfolio-black text-left font-medium md:text-justify">
+          <p className="reveal-lines text-section-body text-portfolio-black text-left font-medium md:text-justify">
             {dict.paragraph1}
           </p>
         </div>
 
         <div className="flex w-full flex-col leading-snug md:w-auto md:max-w-242.5 md:leading-13">
-          <p className="text-section-body text-portfolio-black text-left font-medium md:text-justify">
+          <p className="reveal-lines text-section-body text-portfolio-black text-left font-medium md:text-justify">
             {dict.paragraph2}
           </p>
         </div>
       </div>
 
       <div className="mt-16 flex w-full flex-col leading-snug md:mt-28 md:leading-13">
-        <p className="text-section-body text-portfolio-black text-left font-medium md:text-justify">
+        <p className="reveal-lines text-section-body text-portfolio-black text-left font-medium md:text-justify">
           {dict.paragraph3}
         </p>
       </div>
