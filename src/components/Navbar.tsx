@@ -4,7 +4,20 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import TranslateMenu from './TranslateMenu'
 
-export default function Navbar() {
+interface NavbarProps {
+  dict: {
+    work: string
+    about: string
+    statistics: string
+    contact: string
+  }
+  lang: {
+    pt: string
+    en: string
+  }
+}
+
+export default function Navbar({ dict, lang }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isLangOpen, setIsLangOpen] = useState(false)
 
@@ -25,19 +38,19 @@ export default function Navbar() {
           <ul className="text-portfolio-percent flex gap-22 font-medium">
             <li>
               <a href="#work" className="transition-opacity hover:opacity-70">
-                Work
+                {dict.work}
               </a>
             </li>
             <li>
               <a href="#about" className="transition-opacity hover:opacity-70">
-                About
+                {dict.about}
               </a>
             </li>
           </ul>
         </nav>
 
         <nav className="text-portfolio-black flex items-center gap-22 font-medium">
-          <TranslateMenu />
+          <TranslateMenu lang={lang} />
 
           <ul className="text-portfolio-black flex items-center gap-22 font-medium">
             <li>
@@ -45,12 +58,12 @@ export default function Navbar() {
                 href="#statistics"
                 className="flex items-center transition-opacity hover:opacity-70"
               >
-                Statistics
+                {dict.statistics}
               </a>
             </li>
             <li>
               <a href="#contact" className="transition-opacity hover:opacity-70">
-                Contact
+                {dict.contact}
               </a>
             </li>
           </ul>
@@ -107,16 +120,16 @@ export default function Navbar() {
                 {isMenuOpen && (
                   <div className="flex w-full justify-between">
                     <a href="#work" onClick={() => setIsMenuOpen(false)}>
-                      Work
+                      {dict.work}
                     </a>
                     <a href="#about" onClick={() => setIsMenuOpen(false)}>
-                      About
+                      {dict.about}
                     </a>
                     <a href="#statistics" onClick={() => setIsMenuOpen(false)}>
-                      Statistics
+                      {dict.statistics}
                     </a>
                     <a href="#contact" onClick={() => setIsMenuOpen(false)}>
-                      Contact
+                      {dict.contact}
                     </a>
                   </div>
                 )}
@@ -127,13 +140,13 @@ export default function Navbar() {
                       onClick={() => setIsLangOpen(false)}
                       className="transition-opacity active:opacity-75"
                     >
-                      Portuguese
+                      {lang.pt}
                     </button>
                     <button
                       onClick={() => setIsLangOpen(false)}
                       className="transition-opacity active:opacity-75"
                     >
-                      English
+                      {lang.en}
                     </button>
                   </div>
                 )}

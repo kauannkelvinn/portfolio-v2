@@ -11,10 +11,11 @@ import Work from '@/components/Work'
 import About from '@/components/About'
 import Statistics from '@/components/Statistics'
 import Footer from '@/components/Footer'
+import pt from '@/app/dictionaries/pt.json'
 
 gsap.registerPlugin(ScrollTrigger)
 
-export default function Home() {
+export default function HomeClient({ dict }: { dict: typeof pt }) {
   const containerRef = useRef<HTMLDivElement>(null)
   const mainRef = useRef<HTMLElement>(null)
   const bigFooterRef = useRef<HTMLDivElement>(null)
@@ -55,18 +56,18 @@ export default function Home() {
   return (
     <div ref={containerRef} className="bg-portfolio-white relative w-full overflow-x-hidden">
       <main ref={mainRef} className="relative z-10 flex w-full flex-col pb-24">
-        <Navbar />
-        <Hero />
-        <Work />
-        <About />
-        <Statistics />
+        <Navbar dict={dict.nav} lang={dict.footer.mobile} />
+        <Hero dict={dict.hero} />
+        <Work dict={dict.work} />
+        <About dict={dict.about} />
+        <Statistics dict={dict.statistics} />
       </main>
 
       <div
         ref={bigFooterRef}
         className="bg-portfolio-footer text-portfolio-white fixed bottom-0 left-1/2 z-20 h-[90vh] w-screen -translate-x-1/2 opacity-0 will-change-transform"
       >
-        <Footer />
+        <Footer dict={dict.footer} nav={dict.nav} />
       </div>
     </div>
   )

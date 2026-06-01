@@ -1,0 +1,88 @@
+{
+  "seo": {
+    "title": "Kauan Kelvin | Full Stack Software Engineer",
+    "description": "Portfolio of Kauan Kelvin, Software Engineer focused on performance and scalable architectures."
+  },
+  "nav": {
+    "work": "Work",
+    "about": "About",
+    "statistics": "Statistics",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Software Engineer",
+    "subtitle": "Building things that matter.",
+    "description": "Focused on scalable architecture, top-tier performance, and end-to-end software engineering, integrating from clean interfaces to complex systems and APIs that solve real problems.",
+    "ctaWork": "View work",
+    "ctaAbout": "Read about me"
+  },
+  "work": {
+    "title": "Work",
+    "project1": {
+      "title": "Appreso Kaf",
+      "description": "SaaS Dashboard (\"Life OS\") with generative AI and automations via WhatsApp Business API."
+    },
+    "project2": {
+      "title": "Watch Party",
+      "description": "Social streaming platform with real-time video synchronization and chat."
+    },
+    "project3": {
+      "title": "Giromax",
+      "description": "Smart Offer Showcase focused on affiliate marketing."
+    }
+  },
+  "about": {
+    "title": "About",
+    "paragraph1": "I am a full-stack engineer focused on building fast web systems. My total focus is on performance, clean architecture, and product experience.",
+    "paragraph2": "Merging robust interfaces in React and Next.js with stable backend structures using Node.js and AWS, I approach code analytically. My background handling critical incidents under pressure gave me the discipline to focus on root causes. In practice, this translates to hunting rendering bottlenecks, optimizing complex real-time data flows, and designing secure multi-tenant architectures.",
+    "paragraph3": "From delivering complex BI dashboards to building interactive 3D experiences, I feel at home working with autonomy, fast deploys, and a high level of technical craft using the technologies that make up my core stack:"
+  },
+  "statistics": {
+    "title": "Statistics",
+    "stat1": {
+      "value": "40",
+      "unit": "%",
+      "description": "Reduction in initial chart load times through the refactoring of complex data rendering components in client-side dashboards."
+    },
+    "stat2": {
+      "value": "100",
+      "unit": "%",
+      "description": "Stability achieved in container deployment pipelines following environment audits and resolution of dependency lockfile parity."
+    },
+    "stat3": {
+      "value": "+3",
+      "unit": "years",
+      "description": "Continuous hands-on experience in the JavaScript, TypeScript domain, and modern full-stack ecosystem architectures."
+    },
+    "highlights": {
+      "title": "Engineering Highlights -",
+      "item1": {
+        "title": "0 → 1 Builder",
+        "description": "Proven track record of developing auxiliary product architecture from scratch, bridging the gap between raw data APIs and end-user product design."
+      },
+      "item2": {
+        "title": "Operational Excellence",
+        "description": "Experience managing high-pressure technical operations, root cause investigations, and strict SLA compliance."
+      },
+      "item3": {
+        "title": "Global Talent Pool",
+        "description": "Vetted and approved across multiple cloud-specialized and international freelance software platforms."
+      }
+    }
+  },
+  "footer": {
+    "title": "Kauan Kelvin",
+    "subtitle": "Full Stack Software Engineer",
+    "links": {
+      "linkedin": "Linkedin",
+      "twitter": "Twitter",
+      "github": "Github",
+      "email": "Email"
+    },
+    "mobile": {
+      "home": "Home",
+      "pt": "Portuguese",
+      "en": "English"
+    }
+  }
+}
