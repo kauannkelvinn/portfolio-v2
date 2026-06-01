@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Kauan Kelvin | Full Stack Software Engineer
 
-## Getting Started
+A high-performance, neo-brutalist portfolio built to showcase technical craft, scalable architecture, and immersive user experiences.
 
-First, run the development server:
+![Kauan Kelvin Portfolio](public/opengraph-image.png)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
+## Technical Overview
+
+This project is not just a static site; it's a demonstration of modern web engineering principles. It features a custom internal design system, hardware-accelerated animations, and edge-first analytics, all while maintaining strict adherence to Core Web Vitals and accessibility standards.
+
+### Core Stack
+* **Framework:** Next.js (App Router)
+* **Language:** TypeScript
+* **Styling:** Tailwind CSS v4 (Custom Neo-brutalist Theme)
+* **Motion & Physics:** GSAP (ScrollTrigger, Custom Easing) & SplitType
+* **Analytics:** Vercel Analytics (Privacy-first, edge-rendered)
+
+## Key Features
+
+* **Advanced Masked Text Reveal:** Custom GSAP implementations for line-by-line staggered typography animations, replicating Awwwards-winning editorial motion.
+* **Complex Scroll Topologies:** Bottom-spacer parallax reveals and sticky stacking contexts engineered without layout thrashing.
+* **Fluid Typography:** Implementation of CSS `clamp()` functions for seamless scaling across viewports without breakpoint jumps.
+* **Internationalization (i18n):** Native multi-language support (EN/PT) with persistent layout state.
+* **Zero-FOUC Architecture:** Server-Side Rendering (SSR) optimized to prevent flashes of unstyled content before JavaScript hydration.
+
+## Local Development
+
+Clone the repository and install dependencies using `pnpm`:
+
+\`\`\`bash
+git clone https://github.com/kauannkelvinn/portfolio-v2.git
+cd portfolio-v2
+pnpm install
+\`\`\`
+
+Start the development server:
+
+\`\`\`bash
 pnpm dev
-# or
-bun dev
-```
+\`\`\`
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deployment
+Continuous Integration and Deployment are handled via GitHub Actions and Vercel. The production environment is configured with strict security headers and custom DNS mapping.
