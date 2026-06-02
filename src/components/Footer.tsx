@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import { useScrollToSection } from '@/hooks/useScrollToSection'
 
 interface FooterProps {
@@ -33,7 +33,6 @@ export default function Footer({ dict, nav }: FooterProps) {
   const [isDesktopLangOpen, setIsDesktopLangOpen] = useState(false)
 
   const pathname = usePathname()
-  const router = useRouter()
   const { scrollToSection, scrollToTop } = useScrollToSection()
 
   const switchLang = (newLocale: string) => {
@@ -45,7 +44,7 @@ export default function Footer({ dict, nav }: FooterProps) {
     setIsDesktopLangOpen(false)
 
     setTimeout(() => {
-      router.push(segments.join('/'), { scroll: false })
+      window.location.href = segments.join('/')
     }, 400)
   }
   return (

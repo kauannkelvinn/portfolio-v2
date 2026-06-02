@@ -39,8 +39,6 @@ export default function HomeClient({ dict }: { dict: typeof pt }) {
         const main = mainRef.current
         if (!footer || !main) return
 
-        gsap.to(main, { opacity: 1, duration: 0.4, ease: 'power2.inOut' })
-
         gsap.set(['.reveal-text', '.reveal-lines'], { opacity: 1 })
 
         gsap.set(footer, {
@@ -132,6 +130,13 @@ export default function HomeClient({ dict }: { dict: typeof pt }) {
           ease: 'power2.inOut',
         })
 
+        gsap.to(mainRef.current, {
+          opacity: 1,
+          duration: 0.5,
+          ease: 'power2.inOut',
+          clearProps: 'all',
+        })
+
         refreshTimeout = setTimeout(() => ScrollTrigger.refresh(), 100)
       })
 
@@ -146,11 +151,7 @@ export default function HomeClient({ dict }: { dict: typeof pt }) {
   )
 
   return (
-    <div
-      key={dict.nav.work}
-      ref={containerRef}
-      className="bg-portfolio-white relative w-full overflow-x-hidden"
-    >
+    <div ref={containerRef} className="bg-portfolio-white relative w-full overflow-x-hidden">
       <main ref={mainRef} className="relative z-10 flex w-full flex-col pb-24 opacity-0">
         <Navbar dict={dict.nav} lang={dict.footer.mobile} />
         <Hero dict={dict.hero} />
