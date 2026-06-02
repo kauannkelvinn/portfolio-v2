@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import { useScrollToSection } from '@/hooks/useScrollToSection'
 import TranslateMenu from './TranslateMenu'
 
@@ -24,7 +24,6 @@ export default function Navbar({ dict, lang }: NavbarProps) {
   const [isLangOpen, setIsLangOpen] = useState(false)
 
   const pathname = usePathname()
-  const router = useRouter()
   const { scrollToSection } = useScrollToSection()
 
   const toggleMenu = () => {
@@ -46,7 +45,7 @@ export default function Navbar({ dict, lang }: NavbarProps) {
     setIsMenuOpen(false)
 
     setTimeout(() => {
-      router.push(segments.join('/'), { scroll: false })
+      window.location.href = segments.join('/')
     }, 400)
   }
 

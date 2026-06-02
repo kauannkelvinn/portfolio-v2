@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 
 interface TranslateMenuProps {
   lang: {
@@ -13,7 +13,6 @@ interface TranslateMenuProps {
 export default function TranslateMenu({ lang }: TranslateMenuProps) {
   const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()
-  const router = useRouter()
 
   const switchLang = (newLocale: string) => {
     if (!pathname) return
@@ -23,7 +22,7 @@ export default function TranslateMenu({ lang }: TranslateMenuProps) {
     setIsOpen(false)
 
     setTimeout(() => {
-      router.push(segments.join('/'), { scroll: false })
+      window.location.href = segments.join('/')
     }, 300)
   }
   return (
