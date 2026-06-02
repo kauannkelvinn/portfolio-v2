@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { usePathname, useRouter } from 'next/navigation'
+import { useScrollToSection } from '@/hooks/useScrollToSection'
 import TranslateMenu from './TranslateMenu'
 
 interface NavbarProps {
@@ -24,6 +25,7 @@ export default function Navbar({ dict, lang }: NavbarProps) {
 
   const pathname = usePathname()
   const router = useRouter()
+  const { scrollToSection } = useScrollToSection()
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
@@ -54,14 +56,22 @@ export default function Navbar({ dict, lang }: NavbarProps) {
         <nav>
           <ul className="text-portfolio-percent flex gap-22 font-medium">
             <li>
-              <a href="#work" className="transition-opacity hover:opacity-70">
+              <button
+                type="button"
+                onClick={scrollToSection('work')}
+                className="cursor-pointer transition-opacity hover:opacity-70"
+              >
                 {dict.work}
-              </a>
+              </button>
             </li>
             <li>
-              <a href="#about" className="transition-opacity hover:opacity-70">
+              <button
+                type="button"
+                onClick={scrollToSection('about')}
+                className="cursor-pointer transition-opacity hover:opacity-70"
+              >
                 {dict.about}
-              </a>
+              </button>
             </li>
           </ul>
         </nav>
@@ -71,17 +81,22 @@ export default function Navbar({ dict, lang }: NavbarProps) {
 
           <ul className="text-portfolio-black flex items-center gap-22 font-medium">
             <li>
-              <a
-                href="#statistics"
-                className="flex items-center transition-opacity hover:opacity-70"
+              <button
+                type="button"
+                onClick={scrollToSection('statistics')}
+                className="flex cursor-pointer items-center transition-opacity hover:opacity-70"
               >
                 {dict.statistics}
-              </a>
+              </button>
             </li>
             <li>
-              <a href="#contact" className="transition-opacity hover:opacity-70">
+              <button
+                type="button"
+                onClick={scrollToSection('contact')}
+                className="cursor-pointer transition-opacity hover:opacity-70"
+              >
                 {dict.contact}
-              </a>
+              </button>
             </li>
           </ul>
         </nav>
@@ -91,7 +106,7 @@ export default function Navbar({ dict, lang }: NavbarProps) {
         <div className="flex w-full items-end justify-between pt-6 pb-3">
           <button
             onClick={toggleLang}
-            className="pb-1 transition-opacity focus:outline-none active:opacity-75"
+            className="cursor-pointer pb-1 transition-opacity focus:outline-none active:opacity-75"
           >
             <img
               src={`${process.env.NEXT_PUBLIC_CDN_URL}/images/translate.png`}
@@ -134,18 +149,46 @@ export default function Navbar({ dict, lang }: NavbarProps) {
               <div className="text-ui-menu text-portfolio-black tracking-tightest flex w-full pt-4 pb-4 font-medium">
                 {isMenuOpen && (
                   <div className="flex w-full justify-between">
-                    <a href="#work" onClick={() => setIsMenuOpen(false)}>
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        setIsMenuOpen(false)
+                        scrollToSection('work')(e)
+                      }}
+                      className="cursor-pointer"
+                    >
                       {dict.work}
-                    </a>
-                    <a href="#about" onClick={() => setIsMenuOpen(false)}>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        setIsMenuOpen(false)
+                        scrollToSection('about')(e)
+                      }}
+                      className="cursor-pointer"
+                    >
                       {dict.about}
-                    </a>
-                    <a href="#statistics" onClick={() => setIsMenuOpen(false)}>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        setIsMenuOpen(false)
+                        scrollToSection('statistics')(e)
+                      }}
+                      className="cursor-pointer"
+                    >
                       {dict.statistics}
-                    </a>
-                    <a href="#contact" onClick={() => setIsMenuOpen(false)}>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        setIsMenuOpen(false)
+                        scrollToSection('contact')(e)
+                      }}
+                      className="cursor-pointer"
+                    >
                       {dict.contact}
-                    </a>
+                    </button>
                   </div>
                 )}
 
@@ -153,13 +196,13 @@ export default function Navbar({ dict, lang }: NavbarProps) {
                   <div className="flex w-full justify-start gap-8">
                     <button
                       onClick={() => switchLang('pt')}
-                      className="transition-opacity active:opacity-75"
+                      className="cursor-pointer transition-opacity active:opacity-75"
                     >
                       {lang.pt}
                     </button>
                     <button
                       onClick={() => switchLang('en')}
-                      className="transition-opacity active:opacity-75"
+                      className="cursor-pointer transition-opacity active:opacity-75"
                     >
                       {lang.en}
                     </button>

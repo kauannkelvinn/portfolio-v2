@@ -58,27 +58,27 @@ export default function Footer({ dict, nav }: FooterProps) {
           </div>
 
           <div className="text-footer-nav text-portfolio-nav tracking-tightest flex flex-col items-end gap-3">
-            <a
-              href="#work"
+            <button
+              type="button"
               onClick={scrollToSection('work')}
-              className="hover:text-portfolio-white transition"
+              className="hover:text-portfolio-white cursor-pointer transition"
             >
               {nav.work}
-            </a>
-            <a
-              href="#about"
+            </button>
+            <button
+              type="button"
               onClick={scrollToSection('about')}
-              className="hover:text-portfolio-white transition"
+              className="hover:text-portfolio-white cursor-pointer transition"
             >
               {nav.about}
-            </a>
-            <a
-              href="#statistics"
+            </button>
+            <button
+              type="button"
               onClick={scrollToSection('statistics')}
-              className="hover:text-portfolio-white transition"
+              className="hover:text-portfolio-white cursor-pointer transition"
             >
               {nav.statistics}
-            </a>
+            </button>
           </div>
         </div>
 
@@ -203,13 +203,13 @@ export default function Footer({ dict, nav }: FooterProps) {
                 <div className="text-ui-menu flex flex-col items-start gap-2 pb-5 font-medium">
                   <button
                     onClick={() => switchLang('pt')}
-                    className="transition-opacity active:opacity-70"
+                    className="cursor-pointer transition-opacity active:opacity-70"
                   >
                     {dict.mobile.pt}
                   </button>
                   <button
                     onClick={() => switchLang('en')}
-                    className="transition-opacity active:opacity-70"
+                    className="cursor-pointer transition-opacity active:opacity-70"
                   >
                     {dict.mobile.en}
                   </button>
@@ -221,7 +221,7 @@ export default function Footer({ dict, nav }: FooterProps) {
           <div className="relative flex w-full items-center justify-between">
             <button
               onClick={() => setIsLangOpen(!isLangOpen)}
-              className="flex items-center transition-opacity focus:outline-none active:opacity-70"
+              className="flex cursor-pointer items-center transition-opacity focus:outline-none active:opacity-70"
             >
               <img
                 src={`${process.env.NEXT_PUBLIC_CDN_URL}/images/global.png`}
@@ -239,7 +239,7 @@ export default function Footer({ dict, nav }: FooterProps) {
 
             <button
               onClick={scrollToTop}
-              className="text-ui-menu font-medium transition-opacity active:opacity-70"
+              className="text-ui-menu cursor-pointer font-medium transition-opacity active:opacity-70"
             >
               {dict.mobile.home}
             </button>
