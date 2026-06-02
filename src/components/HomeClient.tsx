@@ -142,11 +142,15 @@ export default function HomeClient({ dict }: { dict: typeof pt }) {
         ScrollTrigger.getAll().forEach((t) => t.kill())
       }
     },
-    { scope: containerRef, dependencies: [dict] }
+    { scope: containerRef }
   )
 
   return (
-    <div ref={containerRef} className="bg-portfolio-white relative w-full overflow-x-hidden">
+    <div
+      key={dict.nav.work}
+      ref={containerRef}
+      className="bg-portfolio-white relative w-full overflow-x-hidden"
+    >
       <main ref={mainRef} className="relative z-10 flex w-full flex-col pb-24 opacity-0">
         <Navbar dict={dict.nav} lang={dict.footer.mobile} />
         <Hero dict={dict.hero} />
