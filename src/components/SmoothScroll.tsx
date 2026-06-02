@@ -71,7 +71,9 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
         lerp: 0.1,
         duration: 1.2,
         smoothWheel: true,
-        anchors: true,
+        anchors: {
+          offset: 0,
+        },
       }}
     >
       <LenisScrollTriggerBridge />
