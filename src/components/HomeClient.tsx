@@ -40,8 +40,6 @@ export default function HomeClient({ dict }: { dict: typeof pt }) {
             const footer = bigFooterRef.current
             if (!footer) return
 
-            gsap.set(['.reveal-text', '.reveal-lines'], { opacity: 1 })
-
             gsap.set(footer, {
               y: '100%',
               opacity: 1,
@@ -66,22 +64,20 @@ export default function HomeClient({ dict }: { dict: typeof pt }) {
               if (split.lines && split.lines.length > 0) {
                 const isHero = el.closest('#hero') !== null
 
-                gsap.fromTo(
-                  split.lines,
-                  { y: '110%' },
-                  {
-                    y: '0%',
-                    duration: isHero ? 1.5 : 1.2,
-                    delay: isHero ? 0.4 : 0,
-                    ease: 'expo.out',
-                    stagger: 0.08,
-                    scrollTrigger: {
-                      trigger: el,
-                      start: 'top 85%',
-                      toggleActions: 'play none none none',
-                    },
-                  }
-                )
+                gsap.set(split.lines, { y: '110%' })
+
+                gsap.to(split.lines, {
+                  y: '0%',
+                  duration: isHero ? 1.5 : 1.2,
+                  delay: isHero ? 0.4 : 0,
+                  ease: 'expo.out',
+                  stagger: 0.08,
+                  scrollTrigger: {
+                    trigger: el,
+                    start: 'top 85%',
+                    toggleActions: 'play none none none',
+                  },
+                })
               }
             })
 
@@ -93,25 +89,25 @@ export default function HomeClient({ dict }: { dict: typeof pt }) {
               if (textsInside.length > 0) {
                 const isHero = container.closest('#hero') !== null
 
-                gsap.fromTo(
-                  textsInside,
-                  { y: '110%' },
-                  {
-                    y: '0%',
-                    duration: isHero ? 1.5 : 1.2,
-                    delay: isHero ? 0.4 : 0,
-                    ease: 'expo.out',
-                    stagger: 0.1,
-                    scrollTrigger: {
-                      trigger: container,
-                      start: 'top 90%',
-                      toggleActions: 'play none none none',
-                      invalidateOnRefresh: true,
-                    },
-                  }
-                )
+                gsap.set(textsInside, { y: '110%' })
+
+                gsap.to(textsInside, {
+                  y: '0%',
+                  duration: isHero ? 1.5 : 1.2,
+                  delay: isHero ? 0.4 : 0,
+                  ease: 'expo.out',
+                  stagger: 0.1,
+                  scrollTrigger: {
+                    trigger: container,
+                    start: 'top 90%',
+                    toggleActions: 'play none none none',
+                    invalidateOnRefresh: true,
+                  },
+                })
               }
             })
+
+            gsap.set(['.reveal-text', '.reveal-lines'], { opacity: 1 })
 
             const tl = gsap.timeline({
               scrollTrigger: {
