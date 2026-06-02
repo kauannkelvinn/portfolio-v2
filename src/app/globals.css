@@ -70,3 +70,13 @@ body {
 .reveal-lines {
   opacity: 0;
 }
+
+::selection {
+  background-color: var(--color-portfolio-black);
+  color: var(--color-portfolio-white);
+}
+
+::-moz-selection {
+  background-color: var(--color-portfolio-black);
+  color: var(--color-portfolio-white);
+}

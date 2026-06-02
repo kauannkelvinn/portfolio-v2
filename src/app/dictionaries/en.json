@@ -19,16 +19,19 @@
   "work": {
     "title": "Work",
     "project1": {
-      "title": "Appreso Kaf",
-      "description": "SaaS Dashboard (\"Life OS\") with generative AI and automations via WhatsApp Business API."
+      "title": "Appresso Kaf",
+      "description": "SaaS Dashboard ('Life OS') with generative AI and automations via WhatsApp Business API.",
+      "stack": "next.js | typescript | aws"
     },
     "project2": {
       "title": "Watch Party",
-      "description": "Social streaming platform with real-time video synchronization and chat."
+      "description": "Social streaming platform with synchronized video playback and real-time chat.",
+      "stack": "next.js | websockets | node.js"
     },
     "project3": {
       "title": "Giromax",
-      "description": "Smart Offer Showcase focused on affiliate marketing."
+      "description": "Smart Offer Showcase focused on affiliate marketing.",
+      "stack": "react | tailwind | api REST"
     }
   },
   "about": {
@@ -66,7 +69,7 @@
       },
       "item3": {
         "title": "Global Talent Pool",
-        "description": "Vetted and approved across multiple cloud-specialized and international freelance software platforms."
+        "description": "Approved through rigorous software engineering screening on elite global platforms such as Toptal and uTest, ensuring technical excellence."
       }
     }
   },
