@@ -35,17 +35,8 @@ export default function Hero({ dict }: HeroProps) {
           </p>
 
           <div className="text-cta text-portfolio-black tracking-tightest mt-18 flex items-center gap-20 font-medium">
-            <a
-              href="#work"
-              className="group text-portfolio-black flex w-max items-center gap-2 focus:outline-none"
-            >
-              <span>
-                {dict.ctaWork}
-                <span className="bg-portfolio-black absolute bottom-0 left-0 h-0.5 w-full origin-left scale-x-0 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100" />
-              </span>
-              <span className="transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1.5">
-                →
-              </span>
+            <a href="#work" className="text-portfolio-black">
+              {dict.ctaWork}
             </a>
             <a
               href="#about"

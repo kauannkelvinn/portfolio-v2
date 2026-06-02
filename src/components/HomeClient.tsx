@@ -4,7 +4,7 @@ import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/dist/ScrollTrigger'
 import SplitType from 'split-type'
-import { useRef, useEffect } from 'react'
+import { useRef } from 'react'
 
 import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
@@ -21,17 +21,17 @@ export default function HomeClient({ dict }: { dict: typeof pt }) {
   const mainRef = useRef<HTMLElement>(null)
   const bigFooterRef = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
-    if ('scrollRestoration' in history) {
-      history.scrollRestoration = 'manual'
-    }
-    window.scrollTo(0, 0)
-  }, [])
-
   useGSAP(
     () => {
+      if (typeof window !== 'undefined') {
+        window.history.scrollRestoration = 'manual'
+        window.scrollTo(0, 0)
+      }
+
       const footer = bigFooterRef.current
       if (!footer) return
+
+      const splits: SplitType[] = []
 
       gsap.set(['.reveal-text', '.reveal-lines'], { opacity: 1 })
 
@@ -46,6 +46,7 @@ export default function HomeClient({ dict }: { dict: typeof pt }) {
 
       splitElements.forEach((el) => {
         const split = new SplitType(el as HTMLElement, { types: 'lines' })
+        splits.push(split)
 
         split.lines?.forEach((line) => {
           const wrapper = document.createElement('div')
@@ -122,6 +123,11 @@ export default function HomeClient({ dict }: { dict: typeof pt }) {
         duration: 1,
         ease: 'power2.inOut',
       })
+
+      return () => {
+        splits.forEach((s) => s.revert())
+        ScrollTrigger.refresh()
+      }
     },
     { scope: containerRef }
   )
