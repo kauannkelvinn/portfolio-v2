@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import '../globals.css'
 import SmoothScroll from '@/components/SmoothScroll'
 import { getDictionary } from '../dictionaries/getDictionaries'
-import { Analytics } from '@vercel/analytics/react'
+import { Analytics } from '@vercel/analytics/next'
 
 export async function generateMetadata({
   params,
