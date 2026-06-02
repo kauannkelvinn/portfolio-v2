@@ -142,7 +142,7 @@ export default function HomeClient({ dict }: { dict: typeof pt }) {
         ScrollTrigger.getAll().forEach((t) => t.kill())
       }
     },
-    { scope: containerRef }
+    { scope: containerRef, dependencies: [dict] }
   )
 
   return (
