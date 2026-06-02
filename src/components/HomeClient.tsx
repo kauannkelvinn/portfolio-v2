@@ -32,113 +32,125 @@ export default function HomeClient({ dict }: { dict: typeof pt }) {
       let refreshTimeout: ReturnType<typeof setTimeout> | undefined
       let cancelled = false
 
-      document.fonts.ready.then(() => {
-        if (cancelled) return
+      document.fonts.ready
+        .then(() => {
+          if (cancelled) return
 
-        const footer = bigFooterRef.current
-        const main = mainRef.current
-        if (!footer || !main) return
+          try {
+            const footer = bigFooterRef.current
+            if (!footer) return
 
-        gsap.set(['.reveal-text', '.reveal-lines'], { opacity: 1 })
+            gsap.set(['.reveal-text', '.reveal-lines'], { opacity: 1 })
 
-        gsap.set(footer, {
-          y: '100%',
-          opacity: 1,
-          borderTopLeftRadius: '0px',
-          borderTopRightRadius: '0px',
-        })
+            gsap.set(footer, {
+              y: '100%',
+              opacity: 1,
+              borderTopLeftRadius: '0px',
+              borderTopRightRadius: '0px',
+            })
 
-        const splitElements = document.querySelectorAll('.reveal-lines')
+            const splitElements = document.querySelectorAll('.reveal-lines')
 
-        splitElements.forEach((el) => {
-          const split = new SplitType(el as HTMLElement, { types: 'lines' })
-          splitInstances.push(split)
+            splitElements.forEach((el) => {
+              const split = new SplitType(el as HTMLElement, { types: 'lines' })
+              splitInstances.push(split)
 
-          split.lines?.forEach((line) => {
-            const wrapper = document.createElement('div')
-            wrapper.style.overflow = 'hidden'
-            wrapper.style.display = 'block'
-            line.parentNode?.insertBefore(wrapper, line)
-            wrapper.appendChild(line)
-          })
+              split.lines?.forEach((line) => {
+                const wrapper = document.createElement('div')
+                wrapper.style.overflow = 'hidden'
+                wrapper.style.display = 'block'
+                line.parentNode?.insertBefore(wrapper, line)
+                wrapper.appendChild(line)
+              })
 
-          if (split.lines && split.lines.length > 0) {
-            const isHero = el.closest('#hero') !== null
+              if (split.lines && split.lines.length > 0) {
+                const isHero = el.closest('#hero') !== null
 
-            gsap.fromTo(
-              split.lines,
-              { y: '110%' },
-              {
-                y: '0%',
-                duration: isHero ? 1.5 : 1.2,
-                delay: isHero ? 0.4 : 0,
-                ease: 'expo.out',
-                stagger: 0.08,
-                scrollTrigger: {
-                  trigger: el,
-                  start: 'top 85%',
-                  toggleActions: 'play none none none',
-                },
+                gsap.fromTo(
+                  split.lines,
+                  { y: '110%' },
+                  {
+                    y: '0%',
+                    duration: isHero ? 1.5 : 1.2,
+                    delay: isHero ? 0.4 : 0,
+                    ease: 'expo.out',
+                    stagger: 0.08,
+                    scrollTrigger: {
+                      trigger: el,
+                      start: 'top 85%',
+                      toggleActions: 'play none none none',
+                    },
+                  }
+                )
               }
-            )
+            })
+
+            const revealContainers = gsap.utils.toArray<HTMLElement>('.overflow-hidden')
+
+            revealContainers.forEach((container) => {
+              const textsInside = container.querySelectorAll('.reveal-text')
+
+              if (textsInside.length > 0) {
+                const isHero = container.closest('#hero') !== null
+
+                gsap.fromTo(
+                  textsInside,
+                  { y: '110%' },
+                  {
+                    y: '0%',
+                    duration: isHero ? 1.5 : 1.2,
+                    delay: isHero ? 0.4 : 0,
+                    ease: 'expo.out',
+                    stagger: 0.1,
+                    scrollTrigger: {
+                      trigger: container,
+                      start: 'top 90%',
+                      toggleActions: 'play none none none',
+                      invalidateOnRefresh: true,
+                    },
+                  }
+                )
+              }
+            })
+
+            const tl = gsap.timeline({
+              scrollTrigger: {
+                trigger: mainRef.current,
+                start: 'bottom bottom',
+                end: '+=100%',
+                scrub: 1,
+                pin: true,
+              },
+            })
+
+            tl.to(footer, {
+              y: '0%',
+              borderTopLeftRadius: '30px',
+              borderTopRightRadius: '30px',
+              duration: 1,
+              ease: 'power2.inOut',
+            })
+          } finally {
+            if (mainRef.current) {
+              gsap.to(mainRef.current, {
+                opacity: 1,
+                duration: 0.5,
+                ease: 'power2.inOut',
+                onComplete: () => {
+                  mainRef.current?.classList.remove('opacity-0')
+                },
+              })
+            }
+
+            refreshTimeout = setTimeout(() => ScrollTrigger.refresh(), 100)
           }
         })
-
-        const revealContainers = gsap.utils.toArray<HTMLElement>('.overflow-hidden')
-
-        revealContainers.forEach((container) => {
-          const textsInside = container.querySelectorAll('.reveal-text')
-
-          if (textsInside.length > 0) {
-            const isHero = container.closest('#hero') !== null
-
-            gsap.fromTo(
-              textsInside,
-              { y: '110%' },
-              {
-                y: '0%',
-                duration: isHero ? 1.5 : 1.2,
-                delay: isHero ? 0.4 : 0,
-                ease: 'expo.out',
-                stagger: 0.1,
-                scrollTrigger: {
-                  trigger: container,
-                  start: 'top 90%',
-                  toggleActions: 'play none none none',
-                  invalidateOnRefresh: true,
-                },
-              }
-            )
+        .catch(() => {
+          if (!cancelled && mainRef.current) {
+            gsap.set(mainRef.current, { opacity: 1 })
+            mainRef.current.classList.remove('opacity-0')
           }
         })
-
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: mainRef.current,
-            start: 'bottom bottom',
-            end: '+=100%',
-            scrub: 1,
-            pin: true,
-          },
-        })
-
-        tl.to(footer, {
-          y: '0%',
-          borderTopLeftRadius: '30px',
-          borderTopRightRadius: '30px',
-          duration: 1,
-          ease: 'power2.inOut',
-        })
-
-        gsap.to(mainRef.current, {
-          opacity: 1,
-          duration: 0.5,
-          ease: 'power2.inOut',
-          clearProps: 'all',
-        })
-
-        refreshTimeout = setTimeout(() => ScrollTrigger.refresh(), 100)
-      })
 
       return () => {
         cancelled = true
