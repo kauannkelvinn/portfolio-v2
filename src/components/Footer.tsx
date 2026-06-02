@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { usePathname, useRouter } from 'next/navigation'
+import { useScrollToSection } from '@/hooks/useScrollToSection'
 
 interface FooterProps {
   dict: {
@@ -33,6 +34,7 @@ export default function Footer({ dict, nav }: FooterProps) {
 
   const pathname = usePathname()
   const router = useRouter()
+  const { scrollToSection, scrollToTop } = useScrollToSection()
 
   const switchLang = (newLocale: string) => {
     if (!pathname) return
@@ -56,13 +58,25 @@ export default function Footer({ dict, nav }: FooterProps) {
           </div>
 
           <div className="text-footer-nav text-portfolio-nav tracking-tightest flex flex-col items-end gap-3">
-            <a href="#work" className="hover:text-portfolio-white transition">
+            <a
+              href="#work"
+              onClick={scrollToSection('work')}
+              className="hover:text-portfolio-white transition"
+            >
               {nav.work}
             </a>
-            <a href="#about" className="hover:text-portfolio-white transition">
+            <a
+              href="#about"
+              onClick={scrollToSection('about')}
+              className="hover:text-portfolio-white transition"
+            >
               {nav.about}
             </a>
-            <a href="#statistics" className="hover:text-portfolio-white transition">
+            <a
+              href="#statistics"
+              onClick={scrollToSection('statistics')}
+              className="hover:text-portfolio-white transition"
+            >
               {nav.statistics}
             </a>
           </div>
@@ -224,7 +238,7 @@ export default function Footer({ dict, nav }: FooterProps) {
             </span>
 
             <button
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              onClick={scrollToTop}
               className="text-ui-menu font-medium transition-opacity active:opacity-70"
             >
               {dict.mobile.home}
