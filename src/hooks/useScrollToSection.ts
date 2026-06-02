@@ -3,33 +3,43 @@
 import { useCallback } from 'react'
 import { useLenis } from 'lenis/react'
 
-function getSectionScrollTarget(sectionId: string, currentScroll: number) {
-  const element = document.getElementById(sectionId)
-  if (!element) return null
-
-  return currentScroll + element.getBoundingClientRect().top
-}
-
 export function useScrollToSection() {
   const lenis = useLenis()
 
   const scrollToSection = useCallback(
-    (sectionId: string) => (event: React.MouseEvent<HTMLAnchorElement>) => {
-      event.preventDefault()
+    (id: string) => (event?: React.MouseEvent) => {
+      if (event) {
+        event.preventDefault()
+      }
+
       if (!lenis) return
 
-      const target = getSectionScrollTarget(sectionId, lenis.scroll)
-      if (target === null) return
+      if (id === 'contact') {
+        lenis.scrollTo('bottom', { duration: 1.2 })
+        return
+      }
 
-      lenis.scrollTo(target, { force: true, offset: 0 })
+      const element = document.getElementById(id)
+      if (element) {
+        const targetPos = element.offsetTop
+
+        lenis.scrollTo(targetPos, {
+          duration: 1.2,
+          offset: 0,
+        })
+      }
     },
     [lenis]
   )
 
   const scrollToTop = useCallback(
-    (event?: React.MouseEvent<HTMLButtonElement>) => {
-      event?.preventDefault()
-      lenis?.scrollTo(0, { force: true, offset: 0 })
+    (event?: React.MouseEvent) => {
+      if (event) {
+        event.preventDefault()
+      }
+      if (lenis) {
+        lenis.scrollTo('top', { duration: 1.2 })
+      }
     },
     [lenis]
   )
